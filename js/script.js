@@ -75,13 +75,51 @@ function clearInput() {
 }
 
 function validDigits(text) {
-    return text.replace(/[^0-9,]/g, '')
+  return text.replace(/[^0-9,]/g, '')
+}
+
+function calcImc(height, weight) {
+  const imc = weight / (height * height)
+  return imc.toFixed(1)
 }
 
 // initialization
 createTable(data)
 
 // events
+const imcInputs = [heightInput, weightInput]
+imcInputs.forEach((el) => {
+  el.addEventListener( 'input',(e) => {
+    const upgradValue = validDigits(e.target.value)
+
+    e.target.value = upgradValue
+  })
+})
+
+calcBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+
+  const height = +heightInput.value.replace(',', '.')
+  const weight = +weightInput.value.replace(',', '.')
+ 
+  if(!weight || !height) {
+    window.alert('[ERRO] Campo está vazio!')
+    return
+  }
+
+  const imc = calcImc(height, weight)
+  
+  let info
+  data.forEach((item) => {
+    if(imc >= item.min && imc <= item.max) {
+      info = item.info
+    }
+  })
+  
+  console.log(info);
+  if(!info) return
+})
+
 clearBtn.addEventListener('click', (e) => {
     e.preventDefault()
     clearInput()
