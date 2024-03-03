@@ -112,7 +112,9 @@ button:hover {
 }
 
 #imc-table {
-    margin: 1.5rem;
+    margin: 1.3rem 0;
+    font-size: 15px;
+    width: 100%;
 }
 
 .table-header {
@@ -136,7 +138,8 @@ button:hover {
     flex: 1;
 }
 
-.table-header h4:nth-child(3) {
+.table-header h4:nth-child(3), 
+.table-data p:nth-child(3) {
     max-width: 80px;
 }
 
