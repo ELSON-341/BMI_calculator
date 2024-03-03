@@ -127,6 +127,8 @@ button:hover {
     margin-bottom: .5rem;
     padding-bottom: .5rem;
     border-bottom: 1px solid #444;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .table-header h4,
