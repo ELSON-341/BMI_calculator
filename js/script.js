@@ -59,13 +59,13 @@ function createTable(data) {
         const div = document.createElement('div')
         div.classList.add('table-data')
     
-        const classification = document.createElement('span')
+        const classification = document.createElement('p')
         classification.innerText = item.classification
         
-        const info = document.createElement('span')
+        const info = document.createElement('p')
         info.innerText = item.info
         
-        const obesity = document.createElement('span')
+        const obesity = document.createElement('p')
         obesity.innerText = item.obesity
     
         div.appendChild(classification)

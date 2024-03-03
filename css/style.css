@@ -134,10 +134,9 @@ button:hover {
     flex: 1;
 }
 
-
-/* .table-header h4:nth-child(3) {
+.table-header h4:nth-child(3) {
     max-width: 80px;
-} */
+}
 
 #back-btn {
     align-self: center;
