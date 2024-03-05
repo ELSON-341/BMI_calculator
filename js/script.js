@@ -38,17 +38,21 @@ const data = [
 ]
 
 // selecting elements
-const imcTable = document.querySelector('#imc-table')
-
 const calcContainer = document.querySelector('#calc-container')
 const resultContainer = document.querySelector('#result-container')
+
+const imcTable = document.querySelector('#imc-table')
 
 const heightInput = document.querySelector('#height')
 const weightInput = document.querySelector('#weight')
 
+const imcNumber = document.querySelector('#imc-number span')
+const imcInfo = document.querySelector('#imc-info span')
+
 const calcBtn = document.querySelector('#calc-btn')
 const clearBtn = document.querySelector('#clear-btn')
-console.log(resultContainer);
+const backBtn = document.querySelector('#back-btn')
+
 
 // functions
 function createTable(data){
@@ -76,6 +80,8 @@ function createTable(data){
 function clear() {
   heightInput.value = ''
   weightInput.value = ''
+  imcNumber.classList = ''
+  imcInfo.classList = ''
 }
 
 function validDigits(text) {
@@ -132,6 +138,32 @@ calcBtn.addEventListener('click', (e) => {
   console.log(info);
 
   showHideResults()
+
+  imcNumber.innerText = imc
+  imcInfo.innerText = info
+
+  switch(info) {
+    case 'Magreza':
+      imcNumber.classList.add('low')
+      imcInfo.classList.add('low')
+      break
+    case 'Normal':
+      imcNumber.classList.add('good')
+      imcInfo.classList.add('good')
+      break
+    case 'Sobrepeso':
+      imcNumber.classList.add('low')
+      imcInfo.classList.add('low')
+      break
+    case 'Obesidade':
+      imcNumber.classList.add('medium')
+      imcInfo.classList.add('medium')
+      break
+    case 'Obesidade grave':
+      imcNumber.classList.add('high')
+      imcInfo.classList.add('high')
+      break
+  }
 })
 
 clearBtn.addEventListener('click', (e) => {
@@ -139,3 +171,11 @@ clearBtn.addEventListener('click', (e) => {
 
   clear()
 })
+
+backBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+
+  showHideResults()
+  clear()
+})
+
